@@ -3,10 +3,12 @@ import os
 import face_recognition as fr
 import numpy as np
 import pygame
+import ctypes
+from ctypes import wintypes
 
 imageList = []
 
-# creates path for images 
+# creates path for images
 path = "images/"
 myList = os.listdir(path)
 
@@ -16,11 +18,13 @@ for img in myList:
     imageList.append(curImg)
 
 # returns a list of face encodings (info to id a face)
+
+
 def findencodings(images):
     encodedlist = []
-    
+
     print("Encoding images...")
-    
+
     for img in images:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         encode = fr.face_encodings(img)[0]
@@ -28,6 +32,8 @@ def findencodings(images):
     return encodedlist
 
 # creates a black window to cover up screen (this is subject to change)
+
+
 def TurnOff():
     pygame.init()
 
@@ -35,17 +41,25 @@ def TurnOff():
 
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
+    # puts the black screen on top of other windows
+    hwnd = pygame.display.get_wm_info()['window']
+
+    user32 = ctypes.WinDLL("user32")
+    user32.SetWindowPos.restype = wintypes.HWND
+    user32.SetWindowPos.argtypes = [wintypes.HWND, wintypes.HWND,
+                                    wintypes.INT, wintypes.INT, wintypes.INT, wintypes.INT, wintypes.UINT]
+    user32.SetWindowPos(hwnd, -1, 0, 0, 0, 0, 0x0001)
+
     screen.fill((0, 0, 0))
 
     pygame.display.flip()
+
 
 # sends the image list through the encoder
 encodedListKnown = findencodings(imageList)
 
 # initializes the camera to capture faces
 cap = cv2.VideoCapture(0)
-
-TurnOff()
 
 while True:
     _, webcam = cap.read()
