@@ -9,15 +9,15 @@ webcam = cv.VideoCapture(2);
 detect = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 #capture images from webcam + assign a label which will be saved in our data_set
-label = input('name: ');
+label = input('id: ');
 count = 0
 
 #set the path to where it will save 
-path_name = os.path.join("data_set/" + label + "." + str(count) + ".jpg")
+path_name = os.path.join("data_set/User." + label + "." + str(count) + ".jpg")
 
 
 #loop to capture images
-while count < 81:
+while count < 50:
     
     _,frame = webcam.read()
 
@@ -40,7 +40,7 @@ while count < 81:
         cv.rectangle(frame, (x,y), (x+w, y+h), (255, 0, 0), 2)
 
         #save the frame captured in path name
-        cv.imwrite(path_name, gray[y:y+h, x:x+w])
+        cv.imwrite("data_set/" + label + '.' + str(count) + ".jpg", gray[y:y+h, x:x+w])
 
         #creates a window and displays our webcam
         cv.imshow('frame', frame)
@@ -48,6 +48,8 @@ while count < 81:
         #delay 50ms 
         if cv.waitKey(50):
             break
-       
+
+        elif count > 50:
+            break
 webcam.release()
 cv.destroyAllWindows()

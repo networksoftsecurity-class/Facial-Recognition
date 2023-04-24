@@ -35,9 +35,9 @@ def getData(path):
 
         for(x,y,w,h) in data_face:
             face_list.append(numpy_image[y:y+h, x:x+w])
-            name_list.append(name)
+            label_list.append(label)
                    
-    return face_list, name_list
+    return face_list, label_list
 
 faces, names = getData('data_set')
 

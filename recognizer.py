@@ -4,14 +4,14 @@ import os
 
 #load recognizer
 recognize = cv.face.LBPHFaceRecognizer_create()
-recognize.read('trainner/trainner.yml')
+recognize.read('LBPH_model/model.yml')
 #create cascade
 face_cascade = cv.CascadeClassifier("haarcascade_frontalface_default.xml");
 
 webcam = cv.VideoCapture(2)
 
 #create recognized users paired with index ids
-user_list = ["", "Anna"]
+user_list = ["", "Anna", "Person2", "Person3"]
 
 #loop to capture frames
 while True:
