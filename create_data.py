@@ -3,7 +3,7 @@ import numpy
 import os
 
 #create a video capture object
-webcam = cv.VideoCapture(2);
+webcam = cv.VideoCapture(0);
 
 #cascadeClassifier class's instance for obj detection
 detect = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
