@@ -7,6 +7,7 @@ https://github.com/networksoftsecurity-class/Facial-Recognition
 Or see attached zip filed.
 
 Whats included:
+
 data_set/ <- directory
 LBPH_model/ <- directory
 haarcascade_frontalface_default.xml
@@ -16,9 +17,11 @@ recognizer.py
 runGui.py
 
 Required:
+
 webcam
 
 Install to run (terminal): 
+
 Video4Linux:
 
 	#install
@@ -62,11 +65,13 @@ numpy:
 
 	# install 
 		sudo apt-get install python3-numpy
-pillow
+pillow:
+
 	# install
 		sudo pip3 install Pillow
 
-tkinter
+tkinter:
+
 	# install
 		sudo apt install python3-tk
 
@@ -77,16 +82,19 @@ In our terminal type:
 v4l2-ctl --list-devices
 
 This should output something similar to:
-Integrated Camera (usb-0000:00:1a.0-1.6):
+
+Integrated Camera (usb-0000:00:1a.0-1.6)
         /dev/video0
 You need to note the first video being used, default will be "video0"
 but if its another we need to change the code in the create_data.py and recognizer.py files.
 The line that reads "webcam = cv.VideoCapture(0);"
 
-Open the terminal to where the directory is located.
+Open the terminal to where the directory is located:
+
 cd /Facial-Recognition
 
-Now run by typing this in the terminal
+Now run by typing this in the terminal:
+
 python3 runGUI.py
 
 This opens a simple GUI.
