@@ -8,7 +8,7 @@ recognize.read('LBPH_model/model.yml')
 #create cascade
 face_cascade = cv.CascadeClassifier("haarcascade_frontalface_default.xml");
 
-webcam = cv.VideoCapture(2)
+webcam = cv.VideoCapture(0)
 
 #create recognized users paired with index ids
 user_list = ["", "Anna", "Person2", "Person3"]
